@@ -6,6 +6,6 @@
     */
 
     require_once "src/Stylist.php";
+
     
-    }
 ?>
