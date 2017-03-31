@@ -1,9 +1,9 @@
 <?php
 class Client
 {
-  private $name;
-  private $stylist_id;
-  private $id;
+    private $name;
+    private $stylist_id;
+    private $id;
 
 function __construct($name, $assigned_stylist_id, $id = null)
 {
@@ -47,5 +47,19 @@ function save()
         return false;
     }
 }
+function delete()
+        {
+            $executed = $GLOBALS['DB']->exec("DELETE FROM clients WHERE id = {$this->getId()};");
+             if (!$executed) {
+                 return false;
+             }
+             $executed = $GLOBALS['DB']->exec("DELETE FROM tasks WHERE category_id = {$this->getId()};");
+             if (!$executed) {
+                 return false;
+             } else {
+                 return true;
+             }
+        }
+
 }
 ?>
