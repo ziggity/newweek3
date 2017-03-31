@@ -41,14 +41,23 @@ class Stylist
         $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists;");
         $stylists = array();
         foreach($returned_stylists as $stylist) {
-            $description = $stylist['description'];
+            $name = $stylist['name'];
             $id = $stylist['id'];
             $client_id = $stylist['client_id'];
-            $new_stylist = new Task($description, $client_id, $id);
+            $new_stylist = new Stylist($name, $client_id, $id);
             array_push($stylists, $new_stylist);
         }
         return $stylists;
       }
+      static function deleteAll()
+        {
+          $executed = $GLOBALS['DB']->exec("DELETE FROM stylists;");
+            if ($executed) {
+                return true;
+            } else {
+                return false;
+            }
+        }
 
 
 

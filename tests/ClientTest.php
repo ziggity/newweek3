@@ -42,21 +42,26 @@
       }
       function test_deleteAll()
        {
-         $stylist = "Jenfer";
-           $id = null;
-           $new_stylist = new Stylist($stylist, $id);
-           $new_stylist->save();
-           $client_name = "Xing";
-           $stylist_id = $new_stylist->getId();
-           $new_client = new Client($client_name, $stylist_id, $id);
-           $new_client->save();
-           $client_name2 = "Max";
-           $stylist_id2 = $new_stylist->getId();
-           $new_client2 = new Client($client_name2, $stylist_id2, $id);
-           $new_client2->save();
-           Client::deleteAll();
-           $result = Client::getAll();
-           $this->assertEquals([], $result);
+         //Arrange
+            $name = "Jen";
+            $test_stylist = new Stylist($name);
+            $test_stylist->save();
+            $stylist_id = $test_stylist->getId();
+
+            // create more than one stlyist
+            $description = "Jackson";
+            $description2 = "Mike";
+            $test_stlyist = new Client($description, $stylist_id);
+            $test_stlyist->save();
+            $test_stlyist2 = new Client($description2, $stylist_id);
+            $test_stlyist2->save();
+
+            //Act
+            Client::deleteAll();
+            $result = Client::getAll();
+
+            //Assert
+            $this->assertEquals([], $result);
        }
 
     }

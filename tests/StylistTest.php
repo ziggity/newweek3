@@ -20,13 +20,13 @@
     function test_getId()
         {
             //Arrange
-            $name = "Home stuff";
-            $test_category = new Category($name);
-            $test_category->save();
+            $name = "Jack";
+            $test_stylist = new stylist($name);
+            $test_stylist->save();
 
-            $description = "Wash the dog";
-            $category_id = $test_category->getId();
-            $test_task = new Task($description, $category_id);
+            $description = "Mike";
+            $stylist_id = $test_stylist->getId();
+            $test_task = new Task($description, $stylist_id);
             $test_task->save();
 
             //Act
@@ -35,14 +35,23 @@
             //Assert
             $this->assertEquals(true, is_numeric($result));
           }
-    static function deleteAll()
-      {
-        $executed = $GLOBALS['DB']->exec("DELETE FROM stylists;");
-          if ($executed) {
-              return true;
-          } else {
-              return false;
-          }
-      }
+          function test_deleteAll()
+            {
+                //Arrange
+                $name = "Jenfer";
+                $name2 = "Luka";
+                $test_stylist = new stylist($name);
+                $test_stylist->save();
+                $test_stylist2 = new stylist($name2);
+                $test_stylist2->save();
+
+                //Act
+                stylist::deleteAll();
+                $result = stylist::getAll();
+
+                //Assert
+                $this->assertEquals([], $result);
+            }
+
   }
 ?>
