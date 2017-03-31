@@ -27,27 +27,36 @@ output: Database shows Mary Jo is affiliated with Joe Smith with unique ID, and 
 * _Spec 3: Stylist names and IDs are easily gathered from database.
 input: get name: Joe Smith
 output:"Joe Smith, ID 503"_
-* _Spec 4: You can change names on database as you please of stylists and clients.
-input: change Stylist or client name Joey Dirt to "Joe D."
+* _Spec 4: You can change stylists names on database as you please.
+input: change Stylist name Joey Dirt to "Joe D."
 output:Joey dirt is now equal to "Joe D."_
-* _Spec 5:All stylist and clients can be deleted if user so chooses with a click of a button.
-input: delete all stylists and also the clients, too.
-output: stylist database is now empty and so is the client database, way to go!_
-* _Spec 6:stretch goals -
-input:
-output:_
-* _Spec 7:stretch goals -
-input:
-output:_
-* _Spec 8:stretch goals -
-input:
-output:_
+* _Spec 5:All stylist can be deleted if user so chooses with a click of a button.
+input: delete all stylists.
+output: stylist database is now empty_
+* _Spec 6:All clients can be deleted if user so chooses with a click of a button.
+input:delete all clients.
+output:client database is now empty_
+* _Spec 7:You can change clients names on database as you please.
+input:change client name Max Larson to "Max Overload".
+output: client name Max Larson is now equal to Max overload._
+* _Spec 8:User can gather IDs of clients or stylists if they choose.
+input: get stylist / client id of Joe Smith.
+output: Joe Smith is id of 503._
 
 ## MySQL commands I used for this project are below:
+* First launch MAMP then enter this command in your terminal:
+* /Applications/MAMP/Library/bin/mysql --host=localhost -uroot -proot
+* SHOW DATABASES;
+* CREATE DATABASE hair_salon;
+* CREATE DATABASE hair_salon_test;
+* USE hair_salon;
+* CREATE TABLE stylists (id SERIAL PRIMARY KEY, name varchar (255));
+* CREATE TABLE clients (id SERIAL PRIMARY KEY, name varchar (255));
+*
+*
+*
+*
 
-*
-*
-*
 
 
 ## Known Bugs
