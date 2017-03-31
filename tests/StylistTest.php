@@ -35,5 +35,14 @@
             //Assert
             $this->assertEquals(true, is_numeric($result));
           }
-        }     
+    static function deleteAll()
+      {
+        $executed = $GLOBALS['DB']->exec("DELETE FROM stylists;");
+          if ($executed) {
+              return true;
+          } else {
+              return false;
+          }
+      }
+  }
 ?>
