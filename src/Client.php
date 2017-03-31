@@ -64,19 +64,18 @@ static function getAll()
       {
           $GLOBALS['DB']->exec("DELETE FROM clients;");
       }
-// function delete()
-//         {
-//             $executed = $GLOBALS['DB']->exec("DELETE FROM clients WHERE id = {$this->getId()};");
-//              if (!$executed) {
-//                  return false;
-//              }
-//              $executed = $GLOBALS['DB']->exec("DELETE FROM tasks WHERE category_id = {$this->getId()};");
-//              if (!$executed) {
-//                  return false;
-//              } else {
-//                  return true;
-//              }
-//         }
+      static function find($finderInput)
+    {
+        $finder_client = null;
+        $clients = Client::getAll();
+        foreach ($clients as $client){
+            $client_id = $client->getId();
+            if ($client_id == $finderInput){
+                $finder_client = $client;
+            }
+        }
+        return $finder_client;
+    }
 
 }
 ?>

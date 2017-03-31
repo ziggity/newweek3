@@ -58,6 +58,18 @@ class Stylist
                 return false;
             }
         }
+        static function find($finderInput)
+        {
+            $finder_stylist = null;
+            $stylists = Stylist::getAll();
+            foreach($stylists as $stylist) {
+                $stylist_id = $stylist->getId();
+                if ($stylist_id == $finderInput) {
+                  $finder_stylists = $stylist;
+                }
+            }
+            return $finder_stylists;
+        }
 
 
 

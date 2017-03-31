@@ -63,6 +63,28 @@
             //Assert
             $this->assertEquals([], $result);
        }
+       function test_find()
+       {
+           //Arrange
+           $stylst = "Jack";
+           $id = null;
+           $testerStylist = new Stylist($stylst, $id);
+           $testerStylist->save();
+
+           $nameClient = "Max";
+           $stylist_id = $testerStylist->getId();
+           $new_client = new Client($nameClient, $stylist_id, $id);
+           $new_client->save();
+
+           $nameClient2 = "Zak";
+           $stylist_id2 = $testerStylist->getId();
+           $new_client2 = new Client($nameClient2, $stylist_id2, $id);
+           $new_client2->save();
+           //Act
+           $result = Client::find($new_client->getId());
+           //Assert
+           $this->assertEquals($new_client, $result);
+       }
 
     }
 

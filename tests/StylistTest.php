@@ -21,16 +21,16 @@
         {
             //Arrange
             $name = "Jack";
-            $test_stylist = new stylist($name);
+            $test_stylist = new Stylist($name);
             $test_stylist->save();
 
             $description = "Mike";
             $stylist_id = $test_stylist->getId();
-            $test_task = new Task($description, $stylist_id);
-            $test_task->save();
+            $test_style = new Stylist($description, $stylist_id);
+            $test_style->save();
 
             //Act
-            $result = $test_task->getId();
+            $result = $test_style->getId();
 
             //Assert
             $this->assertEquals(true, is_numeric($result));
@@ -52,6 +52,22 @@
                 //Assert
                 $this->assertEquals([], $result);
             }
+            function test_find()
+        {
+            //Arrange
+            $stylist = "Jacky";
+            $stylist2 = "Nick";
+            $testerStylist = new Stylist($stylist);
+            $testerStylist->save();
+            $testerStylist2 = new Stylist($stylist2);
+            $testerStylist2->save();
+
+            //Act
+            $result = Stylist::find($testerStylist->getId());
+
+            //Assert
+            $this->assertEquals($testerStylist, $result);
+        }
 
   }
 ?>
