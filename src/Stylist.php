@@ -38,16 +38,16 @@ class Stylist
 
     static function getAll()
     {
-        $returned_tasks = $GLOBALS['DB']->query("SELECT * FROM tasks;");
-        $tasks = array();
-        foreach($returned_tasks as $task) {
-            $description = $task['description'];
-            $id = $task['id'];
-            $category_id = $task['category_id'];
-            $new_task = new Task($description, $category_id, $id);
-            array_push($tasks, $new_task);
+        $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists;");
+        $stylists = array();
+        foreach($returned_stylists as $stylist) {
+            $description = $stylist['description'];
+            $id = $stylist['id'];
+            $client_id = $stylist['client_id'];
+            $new_stylist = new Task($description, $client_id, $id);
+            array_push($stylists, $new_stylist);
         }
-        return $tasks;
+        return $stylists;
       }
 
 

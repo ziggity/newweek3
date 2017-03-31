@@ -13,7 +13,9 @@
     $password = 'root';
     $DB = new PDO($server, $username, $password);
 
-    class StylistTest extends PHPUnit_Framework_TestCase
+    class StylistTest extends PHPUnit_Framework_TestCase {
+
+
 
     function test_getId()
         {
@@ -32,6 +34,6 @@
 
             //Assert
             $this->assertEquals(true, is_numeric($result));
-        }
-
+          }
+        }     
 ?>
