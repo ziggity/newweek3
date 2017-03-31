@@ -6,15 +6,15 @@
     <script src="../scripts/scripts.js"></script>
     <link href="../css/bootstrap.css" type="text/css" rel="stylesheet">
     <link href="../css/styles.css" type="text/css" rel="stylesheet">
-    <title>Zohan's Hair Salon!</title>
+    <title>Zach's Hair Salon!</title>
   </head>
   <body>
-    <div id="bg"class="jumbotron">
-      <h2>Zohan's Hair Salon!</h2>
+    <div class="well">
+      <h1 class="well">Welcome to Zach's Hair Salon!</h1>
       <h3>Create a new Stylist:</h3>
       <form action="/stylists" method="post">
         <div class='form-group'>
-          <label for="name"><h3>Stylist name:</h3></label>
+          <label for="name">Stylist name:</label>
           <input id="name" name="name" type="text">
         </div>
         <div class='form-group'>
@@ -22,21 +22,22 @@
         </div>
       </form>
       {% if stylists is not empty %}
-        <h3>Here are the stylists on your crew:</h3>
-        <ul>
-          {% for stylist in stylists %}
-        <h2><a href="/stylists/{{ stylist.getId }}">{{ stylist.getName }}</a></h2>
-          {% endfor %}
-        </ul>
-        {% else %}
-        <h3>There are no stylists on your team yet!</h3>
-        {% endif %}
-    <div class="col-sm-8 form">
-              <h3><a href="/seeall">Please Click here</a> to see all </br>of the stylists and clients.<h3>
+        <h2>Here are the stylists on your crew:</h2>
+        {% for stylist in stylists %}
+        <h1>Stylist: {{ stylist.getStylistName }}</h1>
+            {% for client in clients %}
+            <ul>
+            {% if stylist.getId == client.getStylistId %}
+                <h2>Client: {{ client.getClientName }}</a></h2>
+            {% endif %}
+            </ul>
+            {% endfor %}
+        {% endfor %}
+      </div>
+    <div class="col-sm-6 form">
               <form action='/delete_stylists' method='post'>
-                  <button class='btn btn-danger' type='submit'>Delete All Stylists</button>
+                  <button class='btn btn-danger' type='submit'>Delete Stylists</button>
               </form>
           </div>
-          </div>
-    </body>
+      </body>
     </html>
