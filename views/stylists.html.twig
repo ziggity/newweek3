@@ -13,9 +13,22 @@
 
     <h1 class="well">Welcome to Zach's Hair Salon!</h1>
 
-    <h3>Create a new Stylist:</h3>
+    <h3>Stylist: {{ stylist.getName }}</h3>
 
-    
+    <form class="" action="/client" method="post">
+      <input type="hidden" name="stylist_id" value="{{ stylist.getId }}">
+      <input type="text" name="name">
+      <button type="submit">Click here to submit!</button>
+    </form>
+
+    {% if clients is not empty %}
+      {% for client in clients %}
+        {{ client.name }}
+      {% endfor %}
+    {% endif %}
+    <a href="/">Go back home</a>
+
+
 
     </div>
     </body>

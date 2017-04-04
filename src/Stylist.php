@@ -43,12 +43,12 @@ class Stylist
         foreach($returned_stylists as $stylist) {
             $name = $stylist['name'];
             $id = $stylist['id'];
-            $client_id = $stylist['client_id'];
-            $new_stylist = new Stylist($name, $client_id, $id);
+            $new_stylist = new Stylist($name,$id);
             array_push($stylists, $new_stylist);
         }
         return $stylists;
       }
+
       static function deleteAll()
         {
           $executed = $GLOBALS['DB']->exec("DELETE FROM stylists;");
@@ -58,17 +58,16 @@ class Stylist
                 return false;
             }
         }
-        static function find($finderInput)
+        static function find($id)
         {
-            $finder_stylist = null;
-            $stylists = Stylist::getAll();
-            foreach($stylists as $stylist) {
-                $stylist_id = $stylist->getId();
-                if ($stylist_id == $finderInput) {
-                  $finder_stylists = $stylist;
-                }
-            }
-            return $finder_stylists;
+          $executed = $GLOBALS['DB']->prepare("SELECT * FROM stylists WHERE id = :id;");
+          $executed->bindParam(':id', $id, PDO::PARAM_STR);
+          $executed->execute();
+          $result = $executed->fetch(PDO::FETCH_ASSOC);
+          if($result['id']==$id){
+            $new_stylist = new Stylist($result['name'], $result['id']);
+            return $new_stylist;
+          }
         }
 
 

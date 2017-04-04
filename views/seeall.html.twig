@@ -6,11 +6,11 @@
     <script src="../scripts/scripts.js"></script>
     <link href="../css/bootstrap.css" type="text/css" rel="stylesheet">
     <link href="../css/styles.css" type="text/css" rel="stylesheet">
-    <title>Zach's Hair Salon!</title>
+    <title>Zohan's Hair Salon!</title>
   </head>
   <body>
-    <div class="well">
-      <h1 class="well">Welcome to Zach's Hair Salon!</h1>
+    <div id="bg"class="jumbotron">
+      <h2>Zohan's Hair Salon!</h2>
       <h3>Create a new Stylist:</h3>
       <form action="/stylists" method="post">
         <div class='form-group'>
@@ -23,21 +23,18 @@
       </form>
       {% if stylists is not empty %}
         <h2>Here are the stylists on your crew:</h2>
-        {% for stylist in stylists %}
-        <h1>Stylist: {{ stylist.getStylistName }}</h1>
-            {% for client in clients %}
-            <ul>
-            {% if stylist.getId == client.getStylistId %}
-                <h2>Client: {{ client.getClientName }}</a></h2>
-            {% endif %}
-            </ul>
-            {% endfor %}
+        <h2> {% for stylist in stylists %} </h2>
+        <h2><li> {{ stylist.name }} </li></h2>
         {% endfor %}
+      {% endif %}
       </div>
+
     <div class="col-sm-6 form">
               <form action='/delete_stylists' method='post'>
                   <button class='btn btn-danger' type='submit'>Delete Stylists</button>
+
               </form>
+                  <a href='/'>Go back home</a>
           </div>
       </body>
     </html>
